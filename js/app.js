@@ -33,6 +33,25 @@ let secondNumber = 0;
 let equationObject = {};
 const wrongFormat = [];
 
+
+
+
+// Scroll
+let valueY = 0;
+
+
+
+// Scroll, Store user selection in playerGuessArray
+function select(guessedTrue) {
+  console.log('player guess arry:',playerGuessArray);
+  // Scroll 80 more pixels
+  valueY += 80;
+  itemContainer.scroll(0, valueY);
+  // Add player guess to array
+  return guessedTrue ? playerGuessArray.push('true') : playerGuessArray.push('false');
+}
+
+
 // Displays Game Page
 function showGamePage() {
   gamePage.hidden = false;
@@ -43,7 +62,6 @@ function showGamePage() {
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
-
 
 
 
