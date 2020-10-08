@@ -60,13 +60,13 @@ function createEquations() {
     firstNumber = getRandomInt(9);
     secondNumber = getRandomInt(9);
     const equationValue = firstNumber * secondNumber;
+    
     const equation = `${firstNumber} x ${secondNumber} = ${equationValue}`;
     equationObject = { value: equation, evaluated: 'true' };
     equationsArray.push(equationObject);
-    // const equationValue = firstNumber + secondNumber;
-    // const equation = `${firstNumber} + ${secondNumber} = ${equationValue}`;
-    // equationObject = { value: equation, evaluated: 'true' };
-    // equationsArray.push(equationObject);
+
+
+  
   }
   // Loop through for each wrong equation, mess with the equation results, push to array
   for (let i = 0; i < wrongEquations; i++) {
@@ -103,6 +103,7 @@ function equationsToDOM() {
     itemContainer.appendChild(item);
   });
 }
+
 
 
 // Displays 3, 2, 1, GO!
@@ -165,4 +166,4 @@ startForm.addEventListener('click', () => {
   });
 
 // Event Listeners
-  startForm.addEventListener('submit', selectQuestionAmount);
+startForm.addEventListener('submit', selectQuestionAmount);
