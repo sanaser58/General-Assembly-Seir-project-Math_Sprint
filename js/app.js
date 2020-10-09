@@ -74,7 +74,6 @@ function scoresToDOM() {
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
   finalTimeEl.textContent = `${finalTimeDisplay}s`;
-  // updateBestScore();
   showScorePage()
   // Scroll to Top, go to Score Page
   itemContainer.scrollTo({ top: 0, behavior: 'instant' });
@@ -86,7 +85,7 @@ function scoresToDOM() {
 function checkTime() {
   console.log(timePlayed);
   if (playerGuessArray.length == questionAmount) {
-    console.log('player guess arry:',playerGuessArray);
+    // console.log('player guess arry:',playerGuessArray);
     clearInterval(timer);
     // Check for wrong guess, add penaltyTime
     equationsArray.forEach((equation, index) => {
@@ -162,10 +161,9 @@ function createEquations() {
     const equation = `${firstNumber} x ${secondNumber} = ${equationValue}`;
     equationObject = { value: equation, evaluated: 'true' };
     equationsArray.push(equationObject);
-
-
   
   }
+
   // Loop through for each wrong equation, mess with the equation results, push to array
   for (let i = 0; i < wrongEquations; i++) {
     firstNumber = getRandomInt(9);
@@ -201,10 +199,6 @@ function equationsToDOM() {
     itemContainer.appendChild(item);
   });
 }
-
-
-
-
 
 
 // Dynamically adding correct/incorrect equations
@@ -273,9 +267,9 @@ function selectQuestionAmount(e) {
     e.preventDefault();
     questionAmount = getRadioValue();
     console.log('question amount:', questionAmount);
-    // if (questionAmount) {
+    if (questionAmount) {
         showCountdown();
-    // }
+    }
   }
 
 
