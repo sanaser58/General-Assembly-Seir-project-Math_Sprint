@@ -16,7 +16,7 @@ For this game ,I am  going to create a math based game.This game will going to t
 
 ## Wireframe:
 
-![wireframe](https://wireframe.cc/fWDiT8)
+https://wireframe.cc/fWDiT8
 
 
 
