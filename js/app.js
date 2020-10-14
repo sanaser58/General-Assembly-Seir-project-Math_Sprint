@@ -30,6 +30,12 @@ let bestScoreArray = [];
 // Game Page
 let firstNumber = 0;
 let secondNumber = 0;
+let thirdNumber = 0;
+let fourthNumber = 0;
+let fifthNumber = 0;
+let sixthNumber = 0;
+let seventhNumber = 0;
+let eighthNumber = 0;
 let equationObject = {};
 const wrongFormat = [];
 
@@ -156,10 +162,25 @@ function createEquations() {
   for (let i = 0; i < correctEquations; i++) {
     firstNumber = getRandomInt(9);
     secondNumber = getRandomInt(9);
-    const equationValue = firstNumber * secondNumber;
+    thirdNumber = getRandomInt(9);
+    fourthNumber = getRandomInt(9);
+    fifthNumber = getRandomInt(9);
+    sixthNumber = getRandomInt(9);
+    seventhNumber = getRandomInt(9);
+    eighthNumber = getRandomInt(9);
+
+
+    const equationValue = firstNumber + secondNumber;
+    const equationValueB = thirdNumber - fourthNumber;
+    const equationValueC = fifthNumber * sixthNumber;
+    const equationValueD = seventhNumber / eighthNumber;
     
-    const equation = `${firstNumber} x ${secondNumber} = ${equationValue}`;
-    equationObject = { value: equation, evaluated: 'true' };
+    const equation = `${firstNumber} + ${secondNumber} = ${equationValue}`;
+    const equationB = `${firstNumber} - ${secondNumber} = ${equationValueB}`;
+    const equationC = `${firstNumber} * ${secondNumber} = ${equationValueC}`;
+    const equationD = `${firstNumber} / ${secondNumber} = ${equationValueD}`;
+
+    equationObject = { value: equation,value2: equationB,value3: equationC,value4: equationD, evaluated: 'true' };
     equationsArray.push(equationObject);
   
   }
@@ -168,14 +189,53 @@ function createEquations() {
   for (let i = 0; i < wrongEquations; i++) {
     firstNumber = getRandomInt(9);
     secondNumber = getRandomInt(9);
-    const equationValue = firstNumber * secondNumber;
-    wrongFormat[0] = `${firstNumber} x ${secondNumber + 1} = ${equationValue}`;
-    wrongFormat[1] = `${firstNumber} x ${secondNumber} = ${equationValue - 1}`;
-    wrongFormat[2] = `${firstNumber + 1} x ${secondNumber} = ${equationValue}`;
-    
-    const formatChoice = getRandomInt(2);
+    thirdNumber = getRandomInt(9);
+    fourthNumber = getRandomInt(9);
+    fifthNumber = getRandomInt(9);
+    sixthNumber = getRandomInt(9);
+    seventhNumber = getRandomInt(9);
+    eighthNumber = getRandomInt(9);
+
+
+   
+    const equationValue = firstNumber + secondNumber;
+    wrongFormat[0] = `${firstNumber} + ${secondNumber + 1} = ${equationValue}`;
+    wrongFormat[1] = `${firstNumber} + ${secondNumber} = ${equationValue - 1}`;
+    wrongFormat[2] = `${firstNumber + 1} + ${secondNumber} = ${equationValue}`;
+
+
+    const equationValueB = thirdNumber - fourthNumber;
+    wrongFormat[3] = `${thirdNumber} - ${fourthNumber + 1} = ${equationValueB}`;
+    wrongFormat[4] = `${thirdNumber} - ${fourthNumber} = ${equationValueB}`;
+    wrongFormat[5] = `${thirdNumber + 1} - ${fourthNumber} = ${equationValueB}`;
+
+
+
+    const equationValueC = fifthNumber * sixthNumber;
+    wrongFormat[6] = `${fifthNumber} * ${sixthNumber + 1} = ${equationValueC}`;
+    wrongFormat[7] = `${fifthNumber} * ${sixthNumber} = ${equationValueC - 1}`;
+    wrongFormat[8] = `${fifthNumber + 1} * ${sixthNumber} = ${equationValueC}`;
+
+
+    const equationValueD = seventhNumber / eighthNumber;
+    wrongFormat[0] = `${seventhNumber} / ${eighthNumber + 1} = ${equationValueD}`;
+    wrongFormat[1] = `${seventhNumber} / ${eighthNumber} = ${equationValueD - 1}`;
+    wrongFormat[2] = `${seventhNumber + 1} / ${eighthNumber} = ${equationValueD}`;
+      
+    const formatChoice = getRandomInt(9);
+    const formatChoiceB = getRandomInt(9);
+    const formatChoiceC = getRandomInt(9);
+    const formatChoiceD = getRandomInt(9);
+
+
     const equation = wrongFormat[formatChoice];
-    equationObject = { value: equation, evaluated: 'false' };
+    const equationB = wrongFormat[formatChoiceB];
+    const equationC = wrongFormat[formatChoiceC];
+    const equationD = wrongFormat[formatChoiceD];
+
+
+
+    equationObject = { value: equation,value2: equationB,value3: equationC,value4: equationD, evaluated: 'false' };
     equationsArray.push(equationObject);
   }
   shuffle(equationsArray);
@@ -187,6 +247,12 @@ function createEquations() {
 
 // Add Equations to DOM
 function equationsToDOM() {
+
+  // for (let i =0; i < equationsArray.length; i++){
+  //   let randomEquation = Math.floor(Math.random() * equationsArray.length)
+  //   console.log(equationsArray[randomEquation]) 
+  // }
+
   equationsArray.forEach((equation) => {
     // Item
     const item = document.createElement('div');
@@ -194,6 +260,8 @@ function equationsToDOM() {
     // Equation Text
     const equationText = document.createElement('h1');
     equationText.textContent = equation.value;
+    
+    
     // Append
     item.appendChild(equationText);
     itemContainer.appendChild(item);
